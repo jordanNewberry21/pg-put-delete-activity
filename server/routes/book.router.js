@@ -41,11 +41,18 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
   let book = req.body; // Book with updated content
   let id = req.params.id; // id of the book to update
-
   console.log(`Updating book ${id} with `, book);
+  let sqlText = `UPDATE books SET status='Read' WHERE id=$1;`;
+  pool.query(sqlText, [id])
+    .then((result) => {
+      res.sendStatus(201);
+    }).catch((error) => {
+      console.log('Error from db:', error);
+      res.sendStatus(500);
+    });
 
   // TODO - REPLACE BELOW WITH YOUR CODE
-  res.sendStatus(500);
+  
 
 });
 
