@@ -6,7 +6,7 @@ $(document).ready(function(){
 
 function addClickHandlers() {
   $('#submitBtn').on('click', handleSubmit);
-
+  $('#bookShelf').on('click', '.deleteBtn', deleteBook)
   // TODO - Add code for edit & delete buttons
 }
 
@@ -61,4 +61,8 @@ function renderBooks(books) {
     $tr.append(`<td><button class="deleteBtn">Delete Book</button>`);
     $('#bookShelf').append($tr);
   }
+}
+
+function deleteBook() {
+  console.log('Testing delete button');
 }
