@@ -58,6 +58,8 @@ function renderBooks(books) {
     // $tr.data('book', book); -- is this line redundant with what I have inside the tr?
     $tr.append(`<td>${book.title}</td>`);
     $tr.append(`<td>${book.author}</td>`);
+    $tr.append(`<td>${book.status}</td>`);
+    $tr.append(`<td><button class="readBtn">Read It!</button></td>`);
     $tr.append(`<td><button class="deleteBtn">Delete Book</button>`);
     $('#bookShelf').append($tr);
   }

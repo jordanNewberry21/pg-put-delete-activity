@@ -8,10 +8,10 @@
     - [] `mark as read` button will be a PUT route
 
 - [] index.html
-    - [] add a delete button for each book
+    - [x] add a delete button for each book
     - [] add a `mark as read` button - PUT route
 
 - [] client.js
-    - [] pretty sure I need an ajax function for my DELETE route here as well
-    - [] update book list display to show status of if a book has been read or not
+    - [x] pretty sure I need an ajax function for my DELETE route here as well
+    - [x] update book list display to show status of if a book has been read or not
     - [] `mark as read` button
