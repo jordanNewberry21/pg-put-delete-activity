@@ -6,7 +6,8 @@ $(document).ready(function(){
 
 function addClickHandlers() {
   $('#submitBtn').on('click', handleSubmit);
-  $('#bookShelf').on('click', '.deleteBtn', deleteBook)
+  $('#bookShelf').on('click', '.deleteBtn', deleteBook);
+  $('#bookShelf').on('click', '.readBtn', changeStatus);
   // TODO - Add code for edit & delete buttons
 }
 
@@ -76,6 +77,20 @@ function deleteBook() {
     refreshBooks();
   }).catch(function (error) {
     console.log('Error ...', error);
+    alert('Something went wrong. Please try again.');
+  });
+}
+
+function changeStatus () {
+  let bookId = $(this).closest('tr').data('id'); // targeting book by the ID number
+  console.log(`Changing status for book: ${bookId}...`); // logging variable to confirm
+  $.ajax({
+    method: 'PUT',
+    url: `/books/${bookId}`,
+  }).then(function (response) {
+    refreshBooks();
+  }).catch(function (error) {
+    console.log('Error...', error);
     alert('Something went wrong. Please try again.');
   });
 }
