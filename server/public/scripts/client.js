@@ -64,5 +64,16 @@ function renderBooks(books) {
 }
 
 function deleteBook() {
-  console.log('Testing delete button');
+  console.log('Deleting book from bookShelf...');
+  let bookId = $(this).closest('tr').data('id'); // getting id of book from deleteBtn click event
+  console.log(bookId);
+  $.ajax({
+    method: 'DELETE',
+    url: `/books/${bookId}`
+  }).then(function (response) {
+    refreshBooks();
+  }).catch(function (error) {
+    console.log('Error ...', error);
+    alert('Something went wrong. Please try again.');
+  });
 }
