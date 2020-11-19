@@ -6,6 +6,7 @@
   <title>Awesome Reads</title>
   <script type="text/javascript" src="vendors/jquery.js"></script>
   <script type="text/javascript" src="scripts/client.js"></script>
+  <link rel="stylesheet" href="vendors/bootstrap.min.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -20,12 +21,12 @@
       <br />
       <label>Author:</label><input type="text" name="" value="" id="author" size="50">
       <br />
-      <button type="button" id="submitBtn">Submit</button>
+      <button type="button" class="btn btn-success" id="submitBtn">Submit</button>
     </section>
     <section>
       <div>
         <h3>Book List</h3>
-        <table>
+        <table class="table table-dark table-striped">
           <thead>
             <tr>
               <th>Title</th>

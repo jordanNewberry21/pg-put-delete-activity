@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function () {
   console.log('jQuery sourced.');
   refreshBooks();
   addClickHandlers();
@@ -16,8 +16,14 @@ function handleSubmit() {
   let book = {};
   book.author = $('#author').val();
   book.title = $('#title').val();
-  addBook(book);
-}
+  // if (book.title === '') {
+  //   alert('Please tell me the name of the book...');
+  // } else if (book.author === '') {
+  //   alert('Please let me know who wrote this book...');
+  // } else {
+    addBook(book);
+  };
+//}
 
 // adds a book to the database
 function addBook(bookToAdd) {
@@ -25,13 +31,13 @@ function addBook(bookToAdd) {
     type: 'POST',
     url: '/books',
     data: bookToAdd,
-    }).then(function(response) {
-      console.log('Response from server.', response);
-      refreshBooks();
-    }).catch(function(error) {
-      console.log('Error in POST', error)
-      alert('Unable to add book at this time. Please try again later.');
-    });
+  }).then(function (response) {
+    console.log('Response from server.', response);
+    refreshBooks();
+  }).catch(function (error) {
+    console.log('Error in POST', error)
+    alert('Unable to add book at this time. Please try again later.');
+  });
 }
 
 // refreshBooks will get all books from the server and render to page
@@ -39,10 +45,10 @@ function refreshBooks() {
   $.ajax({
     type: 'GET',
     url: '/books'
-  }).then(function(response) {
+  }).then(function (response) {
     console.log(response);
     renderBooks(response);
-  }).catch(function(error){
+  }).catch(function (error) {
     console.log('error in GET', error);
   });
 }
@@ -52,7 +58,7 @@ function refreshBooks() {
 function renderBooks(books) {
   $('#bookShelf').empty();
 
-  for(let i = 0; i < books.length; i += 1) {
+  for (let i = 0; i < books.length; i += 1) {
     let book = books[i];
     // For each book, append a new row to our table
     let $tr = $(`<tr data-id=${book.id}></tr>`);
@@ -60,8 +66,8 @@ function renderBooks(books) {
     $tr.append(`<td>${book.title}</td>`);
     $tr.append(`<td>${book.author}</td>`);
     $tr.append(`<td>${book.status}</td>`);
-    $tr.append(`<td><button class="readBtn">Read It!</button></td>`);
-    $tr.append(`<td><button class="deleteBtn">Delete Book</button>`);
+    $tr.append(`<td><button class="btn btn-primary readBtn">Read It!</button></td>`);
+    $tr.append(`<td><button class="deleteBtn btn btn-danger">Delete Book</button>`);
     $('#bookShelf').append($tr);
   }
 }
@@ -81,7 +87,7 @@ function deleteBook() {
   });
 }
 
-function changeStatus () {
+function changeStatus() {
   let bookId = $(this).closest('tr').data('id'); // targeting book by the ID number
   console.log(`Changing status for book: ${bookId}...`); // logging variable to confirm
   $.ajax({

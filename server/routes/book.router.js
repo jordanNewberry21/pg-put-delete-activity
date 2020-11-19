@@ -21,7 +21,6 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   let newBook = req.body;
   console.log(`Adding book`, newBook);
-
   let queryText = `INSERT INTO "books" ("author", "title")
                    VALUES ($1, $2);`;
   pool.query(queryText, [newBook.author, newBook.title])
@@ -32,6 +31,7 @@ router.post('/', (req, res) => {
       console.log(`Error adding new book`, error);
       res.sendStatus(500);
     });
+
 });
 
 // TODO - PUT
@@ -41,8 +41,12 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
   let book = req.body; // Book with updated content
   let id = req.params.id; // id of the book to update
-  console.log(`Updating book ${id} ... `);
+  console.log(`Updating book ${id} ...${book.title} `);
   let sqlText = `UPDATE books SET status='Read' WHERE id=$1;`;
+// I tried putting my conditionals here to make sure inputs were valid
+// I have it working fine on my client.js, but I'm not sure where to put
+// it over here to get it to work.
+
   pool.query(sqlText, [id])
     .then((result) => {
       res.sendStatus(201);
@@ -51,12 +55,12 @@ router.put('/:id', (req, res) => {
       res.sendStatus(500);
     });
 
-  // TODO - REPLACE BELOW WITH YOUR CODE
   
+
 
 });
 
-// TODO - DELETE 
+
 // Removes a book to show that it has been read
 // Request must include a parameter indicating what book to update - the id
 router.get('/:id', (req, res) => {
@@ -85,10 +89,10 @@ router.delete('/:id', (req, res) => {
       console.log('Error from db:', error);
       res.sendStatus(500);
     });
- // at first I just had this route, and it wasn't working for me.
- // after thinking about it for a minute and looking at my notes
- // I realized I needed the other half of this route, the GET above
- // to actually be able to select what I want to delete.
+  // at first I just had this route, and it wasn't working for me.
+  // after thinking about it for a minute and looking at my notes
+  // I realized I needed the other half of this route, the GET above
+  // to actually be able to select what I want to delete.
 });
 
 module.exports = router;

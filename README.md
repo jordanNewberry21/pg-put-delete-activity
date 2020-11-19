@@ -53,13 +53,13 @@ When the submit button is clicked:
 
 ### Additional Features
 
-- [ ] Add validation to the add input form
+- [x] Add validation to the add input form
     - The client side code should make sure that required fields are filled in. You can do this by making the HTML inputs required. Make sure to do something so the user can tell which fields are required. 
-    - The server side should also check that it gets all required fields. If required fields are missing, send back a 500 status.
+    - The server side should also check that it gets all required fields. If required fields are missing, send back a 500 status. `couldn't figure this one out`
 - [ ] Add a way to change the order in which books are shown - sort by title vs sort by author
-- [ ] Improve the styling of the page -- Bootstrap & CSS
-    - [ ] Improve the table layout. Give alternating rows a difference in color
-    - [ ] Make the buttons more UX friendly -- Red for delete, etc. Green for save/submit. 
+- [x] Improve the styling of the page -- Bootstrap & CSS
+    - [x] Improve the table layout. Give alternating rows a difference in color
+    - [x] Make the buttons more UX friendly -- Red for delete, etc. Green for save/submit. 
     - [ ] Make the page responsive -- Bootstrap Grid & Containers will be helpful!
 - [ ] Add the ability to store and show one or more of the following when marking a book as complete: the date completed, a rating, and comments.  You'll have to change many things across the full stack!
 
