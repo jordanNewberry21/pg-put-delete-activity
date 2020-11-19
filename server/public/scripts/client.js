@@ -54,10 +54,11 @@ function renderBooks(books) {
   for(let i = 0; i < books.length; i += 1) {
     let book = books[i];
     // For each book, append a new row to our table
-    let $tr = $('<tr></tr>');
-    $tr.data('book', book);
+    let $tr = $(`<tr data-id=${book.id}></tr>`);
+    // $tr.data('book', book); -- is this line redundant with what I have inside the tr?
     $tr.append(`<td>${book.title}</td>`);
     $tr.append(`<td>${book.author}</td>`);
+    $tr.append(`<td><button class="deleteBtn">Delete Book</button>`);
     $('#bookShelf').append($tr);
   }
 }
